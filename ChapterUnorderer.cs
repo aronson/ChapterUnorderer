@@ -101,7 +101,8 @@ namespace ChapterUnorderer
             _ui.WriteLine(string.Empty);
             for (var index = 0; index < xmlNodeList.Count; ++index)
             {
-                if (IsFlagSet(xmlNodeList[index].SelectNodes("EditionFlagOrdered"))) continue;
+                // TODO: Flag appears to be an invalid XML node in some split ordering encodes
+                //if (IsFlagSet(xmlNodeList[index].SelectNodes("EditionFlagOrdered"))) continue;
                 var nodes = xmlNodeList[index].SelectNodes("ChapterAtom");
                 var muxCmd =
                     $"mkvmerge --no-chapters -o \"(New){(xmlNodeList.Count > 1 ? "(" + (index + 1) + ")" : string.Empty)}{Path.GetFileName(files[idx].FileName)}\" ";
